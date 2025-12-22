@@ -8,9 +8,6 @@ on:
   workflow_dispatch:
   pull_request:
 
-permissions:
-  contents: write
-
 jobs:
   build-app:
     strategy:
@@ -26,5 +23,9 @@ jobs:
           install-swift-android-sdk: true
           swift-android-sdk-version: ${{ matrix.swift-android-sdk-version }}
       - run: swift package init --name SwiftAndroidBuildDemo
-      - run: skip android build
+      # workaround for skip android build toolchain location on Linux
+      - run: mkdir -p ~/.swiftpm/toolchains
+      - run: skip android build --arch aarch64
+      - run: skip android build --arch x86_64
+      - run: skip android build --arch armv7
 
