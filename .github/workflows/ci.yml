@@ -23,6 +23,8 @@ jobs:
           install-swift-android-sdk: true
           swift-android-sdk-version: ${{ matrix.swift-android-sdk-version }}
       - run: swift package init --name SwiftAndroidBuildDemo
+      - run: |
+          echo 'import Android' >> Sources/SwiftAndroidBuildDemo/SwiftAndroidBuildDemo.swift
       # workaround for skip android build toolchain location on Linux
       - run: mkdir -p ~/.swiftpm/toolchains
       - run: skip android build --verbose --arch aarch64
