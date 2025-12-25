@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ['macos-15-intel', 'macos-25', 'ubuntu-latest']
+        os: ['macos-15-intel', 'macos-26', 'ubuntu-latest']
         swift-android-sdk-version: ['nightly-6.3', 'nightly-main']
     runs-on: ${{ matrix.os }}
     steps:
