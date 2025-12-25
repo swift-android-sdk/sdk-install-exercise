@@ -27,7 +27,7 @@ jobs:
           echo 'import Android' >> Sources/SwiftAndroidBuildDemo/SwiftAndroidBuildDemo.swift
       # workaround for skip android build toolchain location on Linux
       - run: mkdir -p ~/.swiftpm/toolchains
-      - run: skip android build --verbose --arch aarch64
       - run: skip android build --verbose --arch x86_64
+      - run: skip android build --verbose --arch aarch64
       - run: skip android build --verbose --arch armv7
 
