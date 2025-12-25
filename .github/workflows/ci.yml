@@ -15,13 +15,21 @@ jobs:
       matrix:
         os: ['macos-15', 'macos-15-intel', 'macos-26', 'ubuntu-latest']
         swift-android-sdk-version: ['6.2', 'nightly-6.3', 'nightly-main']
+        setup-sdk: ['false', 'true']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
       - uses: skiptools/actions/setup-skip@v1
         with:
-          install-swift-android-sdk: true
+          install-swift-android-sdk: ${{ matrix.setup-sdk }}
           swift-android-sdk-version: ${{ matrix.swift-android-sdk-version }}
+      # alternative to setting up the SDK
+      - uses: skiptools/swift-android-action@v2
+        if: ${{ matrix.setup-sdk == 'false' }}
+        with:
+          build-package: false
+          install-swift-android-sdk: ${{ matrix.setup-sdk }}
+          swift-version: ${{ matrix.swift-android-sdk-version }}
       - run: swift package init --name SwiftAndroidBuildDemo
       - run: |
           echo 'import Android' >> Sources/SwiftAndroidBuildDemo/SwiftAndroidBuildDemo.swift
