@@ -9,12 +9,12 @@ on:
   pull_request:
 
 jobs:
-  build-app:
+  ci:
     strategy:
       fail-fast: false
       matrix:
         os: ['macos-15', 'macos-15-intel', 'macos-26', 'ubuntu-latest']
-        swift-android-sdk-version: ['nightly-6.3', 'nightly-main']
+        swift-android-sdk-version: ['6.2', 'nightly-6.3', 'nightly-main']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
