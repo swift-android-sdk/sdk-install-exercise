@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
-      - uses: skiptools/actions/setup-skip@v1
+      - uses: skiptools/actions/setup-skip@main
         with:
           install-swift-android-sdk: ${{ matrix.setup-sdk }}
           swift-android-sdk-version: ${{ matrix.swift-android-sdk-version }}
