@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: skiptools/actions/setup-skip@main
         with:
+          verbose: true
           install-swift-android-sdk: ${{ matrix.setup-sdk }}
           swift-android-sdk-version: ${{ matrix.swift-android-sdk-version }}
       # alternative to setting up the SDK
