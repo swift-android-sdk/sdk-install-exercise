@@ -38,5 +38,5 @@ jobs:
       - run: skip android build --verbose --arch aarch64
       - run: skip android build --verbose --arch armv7
       - run: skip android emulator create
-      - run: skip android emulator lauch
+      - run: skip android emulator launch --background
 
